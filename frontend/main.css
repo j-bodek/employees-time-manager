@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: antiquewhite;
+    text-align: center;
+    margin-top: calc(20vh - 70px);
+}
+
+/* paste csv file */
+.container>form>textarea {
+    width: 100%;
+    height: 60vh;
+    resize: none;
+    padding: 5px;
+}
+
+.container>form>input {
+    width: 15%;
+    height: 4%;
+    margin-top: 2%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container>form>input:hover {
+    background-color: #999;
+    transition: ease-in-out .1s;
+}
+
+/* employees table */
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+td:first-child {
+    width: 15%;
+}
+
+
+
+.editable_cell {
+    background-color: blueviolet;
+    text-align: center;
+    padding: 0;
+}
+
+.active_cell {
+    background-color: green;
+}
+
+.editable_cell:hover {
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+td>input {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

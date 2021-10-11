@@ -1,4 +1,6 @@
-day_work = {9: 2619, 5: 712, 8: 1235, 10: 574, 6: 178, 7: 1369, 4: 813, 2: 4786}
+day_work = {9: 2619, 5: 712, 8: 1235, 10: 1440, 6: 178, 7: 1369, 4: 813, 2: 4786}
+starting_day_work = day_work.copy()
+work_levels = list(day_work.keys())
 
 employees = {
 'ST.E-01': {'time': 480, 1: 0, 2: 0, 3: 1.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 0, 10: 0}, 
@@ -51,6 +53,9 @@ def calculate_employee_score(employee):
     for job in common_jobs:
         # list of time avaiable for employees that can do specific job
         employees_time = [ x['time'] for x in employees.values() if x[job] == 1 ]
+
+        # if work time is 0 skip to prevent divistion by 0
+        if day_work[job] == 0: continue
         # add employee score for one job to overall score
         employee_score += sum(employees_time)/day_work[job]
 
@@ -58,20 +63,52 @@ def calculate_employee_score(employee):
 
 
 
+def distribut_employees_for_one_day(day_work,starting_day_work,work_levels,employees):
 
-work = max(day_work.keys())
+    for a in range(len(day_work)):
+        current_work = max(work_levels)
 
-available_employees = {}
+        available_employees = {}
 
-for index, employee in enumerate(employees.values()) :
-    # skin employees that dont have time or cant do job
-    if not employee['time'] or not employee[work]: continue
-    employee_key = list(employees.keys())[index]
-    # calculate employee score
-    score = calculate_employee_score(employee_key)
-    # set employee to his score
-    available_employees[employee_key] = score
+        # get all employees that can do work and their employee scores
+        for index, employee in enumerate(employees.values()) :
+            # skin employees that dont have time or cant do job
+            if not employee['time'] or not employee[current_work]: continue
+            employee_key = list(employees.keys())[index]
+            # calculate employee score
+            score = calculate_employee_score(employee_key)
+            # set employee to his score
+            available_employees[employee_key] = score
 
 
-print(available_employees)
-    
+        for i in range(len(available_employees)):
+            min_score_employee_index = list(available_employees.values()).index(min(available_employees.values()))
+            employee = list(available_employees.keys())[min_score_employee_index]
+            
+            employee_time = employees[employee]['time']
+            
+            if day_work[current_work] > employee_time:
+                # subtract employee time from work time
+                day_work[current_work] -= employee_time
+                # set employee time to 0
+                employees[employee]['time'] = 0
+
+
+            elif day_work[current_work] <= employee_time:
+                # subtract left work time from employee time
+                employees[employee]['time'] -= day_work[current_work]
+                # set work time to 0
+                day_work[current_work] = 0
+
+            # delete employee from available employees
+            del available_employees[employee]
+
+        # after all delete work from day work
+        work_levels.remove(current_work)
+
+        
+    print(day_work)
+    print(starting_day_work)
+
+
+distribut_employees_for_one_day(day_work,starting_day_work,work_levels,employees)
