@@ -61,8 +61,40 @@ td:first-child {
     cursor: pointer;
 }
 
+.delete_row {
+    padding: 0;
+}
+
+.delete_row>button {
+    width: 100%;
+}
+
 td>input {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+/* display charts */
+
+.charts_container {
+    width: 100%;
+    margin: auto;
+    background-color: antiquewhite;
+    text-align: center;
+    margin-top: calc(20vh);
+    display: flex;
+}
+
+
+.charts {
+    width: 70%;
+    height: 60vh;
+    background-color: blueviolet;
+}
+
+.days {
+    width: 30%;
+    height: 60vh;
+    background-color: brown;
 }
