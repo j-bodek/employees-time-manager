@@ -27,4 +27,4 @@ for index, row in data.iterrows():
         sorted_data[row['Data (Data rozpoczęcia)']][work_level] = work_time
 
 
-    
+print(sorted_data)
