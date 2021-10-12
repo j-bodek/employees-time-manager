@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ECF6FE;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    margin-top: calc(20vh - 70px);
+}
+
+/* paste csv file */
+.container>form>textarea {
+    width: 100%;
+    height: 60vh;
+    resize: none;
+    padding: 5px;
+}
+
+.show_employees,
+.container>form>input {
+    width: 15%;
+    height: 4%;
+    margin-top: 2%;
+    background-color: #CAE6FC;
+    border: 2px solid #0C85E9;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.show_employees:hover,
+.container>form>input:hover {
+    background-color: #ECF6FE;
+    transition: ease-in .1s;
+}
+
+.show_employees>a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* employees table */
+
+
+
+table {
+    background-color: #0C85E9;
+    padding: 0;
+}
+
+td {
+    background-color: #CAE6FC;
+}
+
+td:first-child {
+    width: 15%;
+}
+
+
+
+.editable_cell {
+    background-color: #CAE6FC;
+    text-align: center;
+    padding: 0;
+}
+
+.active_cell {
+    background-color: #02c39a;
+}
+
+.editable_cell:hover {
+    background-color: #ECF6FE;
+    cursor: pointer;
+}
+
+.delete_row {
+    padding: 0;
+}
+
+.delete_row>button {
+    width: 100%;
+    height: 18px;
+    outline-width: 0;
+    border: none;
+    border-width: 0px;
+    cursor: pointer;
+    background-color: #CAE6FC;
+}
+
+.delete_row>button:hover {
+    background-color: #FF8080;
+    transition: ease-in .2s;
+}
+
+td>input {
+    width: 100%;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    outline-width: 0;
+    border: none;
+    border-width: 0px;
+}
+
+.add_employee {
+    margin-top: 2vh;
+    background-color: #CAE6FC;
+    cursor: pointer;
+    border: 2px solid #0C85E9;
+    border-radius: 10px;
+}
+
+.add_employee:hover {
+    background-color: #ECF6FE;
+    transition: ease-in .1s;
+}
+
+/* display charts */
+
+.charts_container {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: #ECF6FE;
+    text-align: center;
+    display: flex;
+}
+
+
+.charts {
+    width: 76%;
+    overflow-y: scroll;
+    padding: 2vh 2%;
+}
+
+.charts::-webkit-scrollbar {
+    display: none;
+}
+
+
+.charts>canvas {
+    margin: 3vh 0;
+    background-color: #F3F9FE;
+    border-radius: 20px;
+    border: 3px solid #CAE6FC;
+}
+
+
+
+.days {
+    width: 20%;
+    height: 100vh;
+    background-color: #053964;
+    overflow-y: scroll;
+}
+
+.days::-webkit-scrollbar {
+    display: none;
+}
+
+.days>form {
+    width: 100%;
+}
+
+.days>form>input {
+    background-color: #46A6F5;
+    border-radius: 10px;
+    width: 60%;
+    padding: 1%;
+    border: 2px solid #67B6F7;
+    color: #eee;
+    cursor: pointer;
+}
+
+.days>form>input:hover {
+    background-color: #67B6F7;
+    transition: ease-in .1s;
+}
+
+.days>form>ul {
+    width: 100%;
+    padding: 0;
+    margin-top: 10vh
+}
+
+.days>form>ul>li {
+    list-style-type: none;
+    width: 100%;
+    color: #eee;
+    display: flex;
+    height: 3%;
+    font-size: 2vh;
+    margin: 15px 0px 0 10%;
+}
+
+.days>form>ul>li>input {
+    height: 2vh;
+    width: 2vh;
+}

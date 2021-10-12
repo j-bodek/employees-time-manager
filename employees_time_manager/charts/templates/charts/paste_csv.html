@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+
+{% block content %} 
+
+
+<div class='container'>
+    <h2>Wklej plik csv</h2>
+
+    <form method='POST'>
+        {% csrf_token %}
+        <textarea name="csv"></textarea>
+        <input type="submit">
+        <button class='show_employees'><a href="{% url 'employees_table'%}">Pokaż Pracowników</a></button>
+    </form>
+
+    
+    
+</div>
+
+
+{% endblock content %}
+
+

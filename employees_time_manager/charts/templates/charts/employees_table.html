@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %} 
+
+
+<div class='container'>
+  <table class='employees_table' style="width:100%">
+      <tr>
+        <td>Stanowisko</td>
+        <td>Obecny</td>
+        <td>E01</td>
+        <td>E02</td>
+        <td>E03</td>
+        <td>E04</td>
+        <td>E05</td>
+        <td>E06</td>
+        <td>E07</td>
+        <td>E08</td>
+        <td>E09</td>
+        <td>E10</td>
+        <td>Usuń</td>
+      </tr>
+    </table>
+
+    <button class='add_employee'>Dodaj Stanowisko</button>
+</div>
+
+
+{% endblock content %}
+
+
+{% block js %} 
+
+<script src="{% static 'js/table.js' %}"></script>
+
+{% endblock js %}
