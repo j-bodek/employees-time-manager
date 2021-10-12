@@ -79,22 +79,81 @@ td>input {
 
 .charts_container {
     width: 100%;
+    height: 100vh;
     margin: auto;
-    background-color: antiquewhite;
+    background-color: #ECF6FE;
     text-align: center;
-    margin-top: calc(20vh);
     display: flex;
 }
 
 
 .charts {
-    width: 70%;
-    height: 60vh;
-    background-color: blueviolet;
+    width: 76%;
+    overflow-y: scroll;
+    padding: 2vh 2%;
 }
 
+.charts::-webkit-scrollbar {
+    display: none;
+}
+
+
+.charts>canvas {
+    margin: 3vh 0;
+    background-color: #F3F9FE;
+    border-radius: 20px;
+    border: 3px solid #CAE6FC;
+}
+
+
+
 .days {
-    width: 30%;
-    height: 60vh;
-    background-color: brown;
+    width: 20%;
+    height: 100vh;
+    background-color: #053964;
+    overflow-y: scroll;
+}
+
+.days::-webkit-scrollbar {
+    display: none;
+}
+
+.days>form {
+    width: 100%;
+}
+
+.days>form>input {
+    background-color: #46A6F5;
+    border-radius: 10px;
+    width: 60%;
+    padding: 1%;
+    border: 2px solid #67B6F7;
+    color: #eee;
+    cursor: pointer;
+}
+
+.days>form>input:hover {
+    background-color: #67B6F7;
+    transition: ease-in .1s;
+}
+
+.days>form>ul {
+    width: 100%;
+    padding: 0;
+    margin-top: 10vh
+}
+
+.days>form>ul>li {
+    list-style-type: none;
+    width: 100%;
+    color: #eee;
+    display: flex;
+    height: 3%;
+    font-size: 2vh;
+    margin: 15px 0px 0 10%;
+}
+
+.days>form>ul>li>input {
+    height: 2vh;
+    width: 2vh;
 }

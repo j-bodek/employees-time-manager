@@ -8,8 +8,41 @@
 </head>
 <body>
     <div class='charts_container'>
-        <div class='charts'></div>
-        <div class='days'></div>
+        <div class='days'>
+            <form action="">
+                <ul>
+                    <li>
+                        <input class='day' type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> I have a bike</label><br>
+                    </li>
+                    
+                    <li>
+                        <input class='day' type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                        <label for="vehicle2"> I have a car</label><br>
+                    </li>
+
+                    <li>
+                        <input class='day' type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                        <label for="vehicle3"> I have a boat</label><br><br>
+                    </li>
+
+                </ul>
+             
+                <input type="submit" value="Pokaż">
+              </form>
+        </div>
+
+
+        <div class='charts'>
+            <canvas id="myChart" class='myChart'></canvas>
+            <canvas id="myChart" class='myChart'></canvas>
+            <canvas id="myChart" class='myChart'></canvas>
+            <canvas id="myChart" class='myChart'></canvas>
+            <canvas id="myChart" class='myChart'></canvas>
+            <canvas id="myChart" class='myChart'></canvas>
+        </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src="chart.js"></script>
 </html>
