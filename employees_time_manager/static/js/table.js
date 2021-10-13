@@ -58,18 +58,18 @@ add_employee_btn.addEventListener('click', (e) => {
 
     document.querySelector('.employees_table').innerHTML += `
     <tr>
-    <td class='editable_cell'>Stanowisko<input type="hidden" name="${row_number}" value='hello'></td>
-    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}"></td>
-    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="mylist[]"></td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
-    <td class='editable_cell'>0</td>
+    <td class='editable_cell'>Stanowisko<input type="hidden" name="${row_number}" value='Stanowisko'></td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'></td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'></td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
+    <td class='editable_cell'>0<input class='hidden_input' type="hidden" name="${row_number}" value='0'</td>
     <td class='delete_row'><button class='delete_row_btn'>Usuń</button></td>
   </tr>
     `

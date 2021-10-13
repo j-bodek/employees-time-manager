@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Employee(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     employee_id = models.CharField(max_length=200, blank=True, null=True)
+    table_row = models.IntegerField()
     presence = models.IntegerField()
     E01 = models.IntegerField()
     E02 = models.IntegerField()
