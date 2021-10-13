@@ -1,8 +1,9 @@
 import pandas as pd
+from io import StringIO
 
-def filter_work_data():
+def filter_work_data(csv):
     # open data with pandas
-    data = pd.read_csv('prace.csv')
+    data = pd.read_csv(StringIO(csv))
 
     sorted_data = {}
 
@@ -27,3 +28,4 @@ def filter_work_data():
             # otherwise create new wartosc and set their value
             sorted_data[row['Data (Data rozpoczęcia)']][work_level] = work_time
 
+    return sorted_data

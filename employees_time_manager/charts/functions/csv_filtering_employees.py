@@ -14,7 +14,8 @@ def filter_employees_data(data):
         sorted_employees[employee['employee_id']]['time'] = 8*60
 
         # loop through all work levels
-        for level in list(employee.keys())[4:]:
+        print(employee)
+        for level in list(employee.keys())[5:]:
             # set work level to int
             work_level = int(level.replace('E0', '').replace('E', ''))
 
@@ -26,4 +27,4 @@ def filter_employees_data(data):
 
 
 
-    print(sorted_employees)
+    return sorted_employees

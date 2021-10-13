@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import Employee
+from .functions.csv_filtering_work import filter_work_data
+from .functions.csv_filtering_employees import filter_employees_data
 
 # Create your views here.
 def get_csv(request):
     # form = getCsv()
     if request.method == 'POST':
         csv = request.POST.get('csv')
-        print(csv)
+
+        #create sessions csv file
+        request.session['csv'] = csv
 
         return redirect('display_charts')
  
@@ -16,7 +20,16 @@ def get_csv(request):
 
 
 def display_charts(request):
+
+    csv = request.session.get('csv')
+    sorted_work_data = filter_work_data(csv)
+    employees = Employee.objects.all().values()
+    employees_data = filter_employees_data(employees)
+    
+    
+    
     return render(request, 'charts/display_charts.html')
+    
 
 
 def employees_table(request):
