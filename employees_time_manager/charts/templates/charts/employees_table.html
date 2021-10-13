@@ -25,6 +25,26 @@
           <td>E10</td>
           <td>Usuń</td>
         </tr>
+
+        {% for employee in data %} 
+        <tr>
+          
+          <td class='editable_cell'>{{employee.employee_id}}<input class='hidden_input' type="hidden" name="{{employee.table_row}}" value='{{employee.employee_id}}'></td>
+          <td class='editable_cell {% if employee.presence %} active_cell {% endif %}'>{{employee.presence}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.presence}}'></td>
+          <td class='editable_cell {% if employee.E01 %} active_cell {% endif %}'>{{employee.E01}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E01}}'></td>
+          <td class='editable_cell {% if employee.E02 %} active_cell {% endif %}'>{{employee.E02}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E02}}'></td>
+          <td class='editable_cell {% if employee.E03 %} active_cell {% endif %}'>{{employee.E03}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E03}}'></td>
+          <td class='editable_cell {% if employee.E04 %} active_cell {% endif %}'>{{employee.E04}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E04}}'></td>
+          <td class='editable_cell {% if employee.E05 %} active_cell {% endif %}'>{{employee.E05}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E05}}'></td>
+          <td class='editable_cell {% if employee.E06 %} active_cell {% endif %}'>{{employee.E06}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E06}}'></td>
+          <td class='editable_cell {% if employee.E07 %} active_cell {% endif %}'>{{employee.E07}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E07}}'></td>
+          <td class='editable_cell {% if employee.E08 %} active_cell {% endif %}'>{{employee.E08}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E08}}'></td>
+          <td class='editable_cell {% if employee.E09 %} active_cell {% endif %}'>{{employee.E09}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E09}}'></td>
+          <td class='editable_cell {% if employee.E10 %} active_cell {% endif %}'>{{employee.E10}}<input class='hidden_input' type="hidden"  name="{{employee.table_row}}" value='{{employee.E10}}'></td>
+          <td class='delete_row'><button type='button' class='delete_row_btn'>Usuń</button></td>
+        </tr>
+        {% endfor %}
+
       </table>
 
       <button type="button" class='add_employee'>Dodaj Stanowisko</button>
