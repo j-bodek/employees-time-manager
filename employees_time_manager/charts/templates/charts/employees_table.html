@@ -6,25 +6,31 @@
 
 
 <div class='container'>
-  <table class='employees_table' style="width:100%">
-      <tr>
-        <td>Stanowisko</td>
-        <td>Obecny</td>
-        <td>E01</td>
-        <td>E02</td>
-        <td>E03</td>
-        <td>E04</td>
-        <td>E05</td>
-        <td>E06</td>
-        <td>E07</td>
-        <td>E08</td>
-        <td>E09</td>
-        <td>E10</td>
-        <td>Usuń</td>
-      </tr>
-    </table>
+  <form action="" method='POST'>
 
-    <button class='add_employee'>Dodaj Stanowisko</button>
+    {% csrf_token %}
+    <table class='employees_table' style="width:100%">
+        <tr>
+          <td>Stanowisko</td>
+          <td>Obecny</td>
+          <td>E01</td>
+          <td>E02</td>
+          <td>E03</td>
+          <td>E04</td>
+          <td>E05</td>
+          <td>E06</td>
+          <td>E07</td>
+          <td>E08</td>
+          <td>E09</td>
+          <td>E10</td>
+          <td>Usuń</td>
+        </tr>
+      </table>
+
+      <button type="button" class='add_employee'>Dodaj Stanowisko</button>
+      <input type="submit" class='save_employees' value='Zapisz'>
+
+  </form>
 </div>
 
 

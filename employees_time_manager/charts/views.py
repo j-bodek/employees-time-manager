@@ -19,4 +19,14 @@ def display_charts(request):
 
 
 def employees_table(request):
+
+    if request.method == 'POST':
+        print(request.POST)
+
     return render(request, 'charts/employees_table.html')
+
+
+
+
+
+    

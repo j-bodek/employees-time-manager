@@ -10,7 +10,7 @@
     <form method='POST'>
         {% csrf_token %}
         <textarea name="csv"></textarea>
-        <input type="submit">
+        <input class='send_csv_btn' type="submit">
         <button class='show_employees'><a href="{% url 'employees_table'%}">Pokaż Pracowników</a></button>
     </form>
 

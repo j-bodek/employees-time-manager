@@ -20,7 +20,7 @@ body {
 }
 
 .show_employees,
-.container>form>input {
+.send_csv_btn {
     width: 15%;
     height: 4%;
     margin-top: 2%;
@@ -31,7 +31,7 @@ body {
 }
 
 .show_employees:hover,
-.container>form>input:hover {
+.send_csv_btn:hover {
     background-color: #ECF6FE;
     transition: ease-in .1s;
 }
@@ -105,7 +105,8 @@ td>input {
     border-width: 0px;
 }
 
-.add_employee {
+.add_employee,
+.save_employees {
     margin-top: 2vh;
     background-color: #CAE6FC;
     cursor: pointer;
@@ -113,7 +114,8 @@ td>input {
     border-radius: 10px;
 }
 
-.add_employee:hover {
+.add_employee:hover,
+.save_employees:hover {
     background-color: #ECF6FE;
     transition: ease-in .1s;
 }
@@ -152,13 +154,26 @@ td>input {
 
 .days {
     width: 20%;
-    height: 100vh;
+    height: 95vh;
     background-color: #053964;
     overflow-y: scroll;
+    padding: 5vh 0 0 0;
 }
 
 .days::-webkit-scrollbar {
     display: none;
+}
+
+.days>a {
+    color: #eee;
+    text-decoration: none;
+    margin-left: 10%;
+    float: left;
+}
+
+.days>a:hover {
+    color: #bbb;
+    transition: ease-in .1s;
 }
 
 .days>form {
