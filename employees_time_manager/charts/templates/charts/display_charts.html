@@ -19,20 +19,17 @@
 
             </ul>
          
-            <input type="submit" value="Pokaż">
+            <input id='show_charts' type="button" value="Pokaż">
         </form>
 
 
     </div>
 
-
+c
     <div class='charts'>
-        <canvas id="myChart" class='myChart'></canvas>
-        <canvas id="myChart" class='myChart'></canvas>
-        <canvas id="myChart" class='myChart'></canvas>
-        <canvas id="myChart" class='myChart'></canvas>
-        <canvas id="myChart" class='myChart'></canvas>
-        <canvas id="myChart" class='myChart'></canvas>
+        {% for day in data %}  
+            <canvas id="myChart{{day}}" style='display: none;' class='myChart' name='{{day}}'></canvas>
+        {% endfor %}
     </div>
 </div>
 

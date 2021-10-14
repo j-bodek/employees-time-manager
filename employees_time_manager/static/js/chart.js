@@ -1,18 +1,21 @@
-let charts = document.querySelectorAll('.myChart')
+let show_charts_btn = document.querySelector('#show_charts')
 
-
-charts.forEach(chart => {
-    // console.log(received_data);
+let display_charts = function (chart) {
     let ctx = chart.getContext('2d');
+
+    day = chart.getAttribute("name");
+    day_data = received_data[day]
+    // subtract coresponding value in day_work from starting_day_work to get number of available minutes
+    available_employees_time = Object.values(day_data['starting_day_work']).map((e, index) => e - Object.values(day_data['day_work'])[index])
 
     let delayed;
     let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['E01', 'E02', 'E03', 'E04', 'E05', 'E06', 'E07', 'E08', 'E09', 'E10'],
+            labels: Object.keys(day_data['day_work']),
             datasets: [{
-                    label: '# of Votes1',
-                    data: [12, 19, 3, 5, 2, 3, 12, 53, 64, 12],
+                    label: 'Dostępny Czas',
+                    data: available_employees_time,
                     backgroundColor: [
                         'rgba(237, 106, 94, 0.6)',
                     ],
@@ -22,8 +25,8 @@ charts.forEach(chart => {
                     borderWidth: 1
                 },
                 {
-                    label: '# of Votes2',
-                    data: [10, 17, 2, 1, 5, 1, 21, 42, 12, 7],
+                    label: 'Potrzebny Czas',
+                    data: Object.values(day_data['starting_day_work']),
                     backgroundColor: [
                         'rgba(23, 195, 178, 0.6)',
                     ],
@@ -50,7 +53,7 @@ charts.forEach(chart => {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Poniedziałek'
+                    text: day
                 },
             },
             responsive: true,
@@ -63,5 +66,21 @@ charts.forEach(chart => {
                 }
             }
         }
+    });
+}
+
+
+show_charts_btn.addEventListener('click', (e) => {
+    checked_days = document.querySelectorAll('input[class=day]:checked');
+    // display none all active charts
+    active_charts = document.querySelectorAll('.myChart')
+    active_charts.forEach(chart => {
+        chart.style.display = 'none'
+    })
+
+    checked_days.forEach(day => {
+        let chart = document.getElementById('myChart' + day.getAttribute("name"));
+        chart.style.display = 'block'
+        display_charts(chart)
     });
 })
