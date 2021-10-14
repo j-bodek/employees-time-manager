@@ -107,6 +107,11 @@ def distribut_employees_for_one_day(day_work,starting_day_work,work_levels,emplo
         # after all delete work from day work
         work_levels.remove(current_work)
 
+    for key in list(day_work.keys()):
+        day_work['E' + str(key).zfill(2)] = day_work.pop(key)
+
+    for key in list(starting_day_work.keys()):
+        starting_day_work['E' + str(key).zfill(2)] = starting_day_work.pop(key)
         
     return {'day_work':day_work, 'starting_day_work':starting_day_work}
 

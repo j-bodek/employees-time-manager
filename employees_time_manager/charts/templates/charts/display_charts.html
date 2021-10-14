@@ -43,8 +43,7 @@
 
 <script type="text/javascript">
     let received_data  = "{{data|safe}}";
-    received_data = received_data.replaceAll("'", '"');
-    console.log(received_data);
+    received_data = JSON.parse(received_data.replaceAll("'", '"'));
 </script>
 
 

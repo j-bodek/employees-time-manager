@@ -1,5 +1,8 @@
 let charts = document.querySelectorAll('.myChart')
+
+
 charts.forEach(chart => {
+    // console.log(received_data);
     let ctx = chart.getContext('2d');
 
     let delayed;
