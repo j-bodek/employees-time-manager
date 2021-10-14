@@ -9,12 +9,13 @@ def filter_employees_data(data):
         if not employee['presence']: continue
 
         sorted_employees[employee['employee_id']] = {}
+        
 
         # set available time for every employee (in minutes)
         sorted_employees[employee['employee_id']]['time'] = 8*60
 
         # loop through all work levels
-        print(employee)
+        
         for level in list(employee.keys())[5:]:
             # set work level to int
             work_level = int(level.replace('E0', '').replace('E', ''))

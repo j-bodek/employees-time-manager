@@ -9,25 +9,20 @@
         <a href="{% url 'get_csv' %}">< Wróć</a>
         <form action="">
             <ul>
+                {% for day in data %}
                 <li>
-                    <input class='day' type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1"> I have a bike</label><br>
+                    <input class='day' type="checkbox" id="{{day}}" name="{{day}}" value="{{day}}">
+                    <label for="vehicle1">{{day}}</label><br>
                 </li>
-                
-                <li>
-                    <input class='day' type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                    <label for="vehicle2"> I have a car</label><br>
-                </li>
+                {% endfor %}
 
-                <li>
-                    <input class='day' type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                    <label for="vehicle3"> I have a boat</label><br><br>
-                </li>
 
             </ul>
          
             <input type="submit" value="Pokaż">
-          </form>
+        </form>
+
+
     </div>
 
 
@@ -45,6 +40,14 @@
 {% endblock content %}
 
 {% block js %}
+
+<script type="text/javascript">
+    let received_data  = "{{data|safe}}";
+    received_data = received_data.replaceAll("'", '"');
+    console.log(received_data);
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 <script src="{% static 'js/chart.js' %}"></script>
 {% endblock js %}
