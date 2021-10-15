@@ -14,7 +14,7 @@
       
     <div class = 'message {{message.tags}}-message'>
         <p>{{message}}</p>
-        <span>✖</span>
+        <span class='close_message'>✖</span>
     </div>
   
     {% endfor %} 
@@ -30,4 +30,5 @@
     {% block js %}
     {% endblock js %}
 </body>
+<script src="{% static 'js/alerts.js' %}"></script>
 </html>

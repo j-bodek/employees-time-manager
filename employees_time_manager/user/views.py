@@ -34,10 +34,10 @@ def register(request):
                 return redirect('login')
             else:
                 # display not matching password message
-                None
+                messages.error(request, 'Hasła są różne!')
         else:
             #display taken username message
-            None
+            messages.error(request, 'Podany login już istnieje!')
             
 
 
