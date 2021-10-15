@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ECF6FE;
+    font-family: sans-serif;
 }
 
 .container {
@@ -279,4 +280,43 @@ td>input {
     width: 60%;
     display: flex;
     height: 4vh;
+}
+
+/* messages */
+.message {
+    position: absolute;
+    width: 40%;
+    top: 10vh;
+    left: calc(30% - 23px);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.message>p,
+.message>span {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.message>span {
+    float: right;
+    cursor: pointer;
+}
+
+.message>p {
+    float: left;
+    margin: 0;
+}
+
+/* error message */
+.error-message {
+    background-color: #EC626E;
+    border: 3px solid #E84653;
+}
+
+/* success message */
+.success-message {
+    background-color: #99D98C;
+    border: 3px solid #77CC66;
 }

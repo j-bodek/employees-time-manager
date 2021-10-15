@@ -9,10 +9,18 @@
 </head>
 <body>
 
-    <div class = 'message'>
-        <span>X</span>
-        <p>message</p>
+    {% if messages %} 
+    {% for message in messages %}
+      
+    <div class = 'message {{message.tags}}-message'>
+        <p>{{message}}</p>
+        <span>✖</span>
     </div>
+  
+    {% endfor %} 
+    {% endif %} 
+
+
 
     {% block content %} 
 
