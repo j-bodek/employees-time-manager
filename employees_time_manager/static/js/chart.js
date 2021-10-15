@@ -58,12 +58,12 @@ let display_charts = function (chart) {
             },
             responsive: true,
             scales: {
-                x: {
-                    stacked: true,
-                },
-                y: {
-                    stacked: true
-                }
+                // x: {
+                //     stacked: true,
+                // },
+                // y: {
+                //     stacked: true
+                // }
             }
         }
     });
