@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+
+{% block content %} 
+    <div class='login_form'>
+        {% if form == 'login' %}
+        <h2>Zaloguj Się</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input name='username' type="text" placeholder="Login">
+            <input name='password' type="password" placeholder="Hasło">
+
+            <div class='form_action_btns'>
+                <input type="submit" value='Zaloguj się'>
+                <input onclick="location.href='{% url 'register' %}'" type="button" value='Załóż konto'>
+            </div>
+
+        </form>
+        {% elif form == 'register' %}
+
+        <h2>Załóż Konto</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input name='username' type="text" placeholder="Login">
+            <input name='password1' type="password" placeholder="Hasło">
+            <input name='password2' type="password" placeholder="Powtórz hasło">
+
+            <div class='form_action_btns'>
+                <input onclick="location.href='{% url 'login' %}'" type="button" value='Zaloguj się'>
+                <input type="submit" value='Załóż konto'>
+            </div>
+
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}
