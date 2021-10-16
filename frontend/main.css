@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ECF6FE;
+    font-family: sans-serif;
 }
 
 .container {
@@ -11,15 +12,45 @@ body {
     margin-top: calc(20vh - 70px);
 }
 
+
 /* paste csv file */
-.container>form>textarea {
-    width: 100%;
-    height: 60vh;
-    resize: none;
-    padding: 5px;
+#upload_file {
+    display: none;
 }
 
-.container>form>input {
+.custom-file-upload {
+    cursor: pointer;
+}
+
+.custom-file-upload>input {
+    width: 0px;
+    ;
+}
+
+.custom-file-upload>div {
+    width: 100%;
+    margin: auto;
+    padding: 10vh 0;
+    background-color: #8DCAF8;
+    border: 2px solid #4FADF5;
+    border-radius: 10px
+}
+
+.custom-file-upload>div>p {
+    color: #666
+}
+
+.custom-file-upload>div>p>span {
+    font-weight: bold;
+}
+
+.custom-file-upload>div>p>span:hover {
+    color: black;
+}
+
+
+.show_employees,
+.send_csv_btn {
     width: 15%;
     height: 4%;
     margin-top: 2%;
@@ -29,10 +60,17 @@ body {
     cursor: pointer;
 }
 
-.container>form>input:hover {
+.show_employees:hover,
+.send_csv_btn:hover {
     background-color: #ECF6FE;
     transition: ease-in .1s;
 }
+
+.show_employees>a {
+    color: black;
+    text-decoration: none;
+}
+
 
 /* employees table */
 
@@ -97,7 +135,8 @@ td>input {
     border-width: 0px;
 }
 
-.add_employee {
+.add_employee,
+.save_employees {
     margin-top: 2vh;
     background-color: #CAE6FC;
     cursor: pointer;
@@ -105,7 +144,8 @@ td>input {
     border-radius: 10px;
 }
 
-.add_employee:hover {
+.add_employee:hover,
+.save_employees:hover {
     background-color: #ECF6FE;
     transition: ease-in .1s;
 }
@@ -144,13 +184,26 @@ td>input {
 
 .days {
     width: 20%;
-    height: 100vh;
+    height: 95vh;
     background-color: #053964;
     overflow-y: scroll;
+    padding: 5vh 0 0 0;
 }
 
 .days::-webkit-scrollbar {
     display: none;
+}
+
+.days>a {
+    color: #eee;
+    text-decoration: none;
+    margin-left: 10%;
+    float: left;
+}
+
+.days>a:hover {
+    color: #bbb;
+    transition: ease-in .1s;
 }
 
 .days>form {
@@ -193,10 +246,13 @@ td>input {
     width: 2vh;
 }
 
+
+
 /* login form */
 .login_form {
     max-width: 600px;
-    /* height: 40vh; */
+    text-align: center;
+    color: #999;
     background-color: #D7EEFF;
     border: 4px solid #CAE9FF;
     margin: 0;
@@ -244,7 +300,7 @@ td>input {
     border-color: #4FADF5;
 }
 
-.login_form>form>.form_action_btns>input[type='button'] {
+.login_form>form>.form_action_btns input:last-child {
     margin-left: 10px;
 }
 
@@ -253,4 +309,43 @@ td>input {
     width: 60%;
     display: flex;
     height: 4vh;
+}
+
+/* messages */
+.message {
+    position: absolute;
+    width: 40%;
+    top: 10vh;
+    left: calc(30% - 23px);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.message>p,
+.message>span {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.message>span {
+    float: right;
+    cursor: pointer;
+}
+
+.message>p {
+    float: left;
+    margin: 0;
+}
+
+/* error message */
+.error-message {
+    background-color: #EC626E;
+    border: 3px solid #E84653;
+}
+
+/* success message */
+.success-message {
+    background-color: #99D98C;
+    border: 3px solid #77CC66;
 }

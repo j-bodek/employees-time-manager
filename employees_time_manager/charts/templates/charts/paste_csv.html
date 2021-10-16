@@ -12,9 +12,10 @@
         {% csrf_token %}
         <!-- custom upload file -->
         <label for="upload_file" class="custom-file-upload">
-            <div class='drop_file'>
+            <!-- drop zone to work needs to have both drop and drag handlers -->
+            <div class='drop_file' ondragover="dragHandlere(event)" ondrop="dropHandler(event);">
                 <img src="https://img.icons8.com/ios/100/000000/upload-to-cloud--v1.png"/>
-                <p>Przeciagnij lub <span>Wybierz</span> plik</p>
+                <p>Przeciagnij lub <span id="choose_file">Wybierz</span> plik</p>
                 <p class='uploaded_file'></p>
             </div>
         </label>
@@ -35,10 +36,30 @@
 
 <script>
 
-let uploadFile = function(event) {
+
+dragHandlere= function(event){
+    event.preventDefault()
+}
+
+dropHandler = function(event){
+    event.preventDefault()
+    // upload droped data to input
+    document.getElementById('upload_file').files = event.dataTransfer.files
+    // display uploaded file name
+    document.querySelector('.uploaded_file').innerHTML = event.dataTransfer.files[0]['name']
+    
+}
+
+uploadFile = function(event) {
     let uploaded_file_name = event.target.files[0]['name'];
     document.querySelector('.uploaded_file').innerHTML = uploaded_file_name
 };
+
+document.querySelector('.drop_file').addEventListener('click',(e)=>{
+   if(event.target.id !== 'choose_file'){
+       e.preventDefault()
+   }
+})
 
 </script>
 
