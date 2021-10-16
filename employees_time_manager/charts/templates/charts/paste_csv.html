@@ -5,11 +5,21 @@
 
 
 <div class='container'>
-    <h2>Wklej plik csv</h2>
+    <h2>Wybierz plik csv</h2>
 
-    <form method='POST'>
+    <!-- Form must have specified enctype="multipart/form-data" otherwise, FILES will be a blank dictionary-like object -->
+    <form method='POST' enctype="multipart/form-data">
         {% csrf_token %}
-        <textarea name="csv"></textarea>
+        <!-- custom upload file -->
+        <label for="upload_file" class="custom-file-upload">
+            <div class='drop_file'>
+                <img src="https://img.icons8.com/ios/100/000000/upload-to-cloud--v1.png"/>
+                <p>Przeciagnij lub <span>Wybierz</span> plik</p>
+                <p class='uploaded_file'></p>
+            </div>
+        </label>
+        <input name='uploaded_file' id='upload_file' onchange="uploadFile(event)" type="file" accept=".csv">
+
         <input class='send_csv_btn' type="submit">
         <button class='show_employees'><a href="{% url 'employees_table'%}">Pokaż Pracowników</a></button>
     </form>
@@ -20,5 +30,18 @@
 
 
 {% endblock content %}
+
+{% block js %}  
+
+<script>
+
+let uploadFile = function(event) {
+    let uploaded_file_name = event.target.files[0]['name'];
+    document.querySelector('.uploaded_file').innerHTML = uploaded_file_name
+};
+
+</script>
+
+{% endblock js %}
 
 

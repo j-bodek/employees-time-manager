@@ -1,13 +1,31 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 
-def login(request):
+def login_user(request):
 
     if request.method == 'POST':
-        print(request.POST)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = authenticate(request, username = username, password = password)
+            print(user)
+
+            if user:
+                login(request,user)
+                messages.success(request, 'Logowanie powiodło się')
+                return redirect('get_csv')
+            else:
+                messages.error(request, 'Login lub hasło są niepoprawne!')
+
+
+        except:
+            messages.error(request, 'Login nie istnieje!')
+
 
     return render(request, 'user/login_register.html', {'form':'login'})
 
@@ -29,9 +47,11 @@ def register(request):
                 print(username, password2)
                 NewUser = User()
                 NewUser.username = username
-                NewUser.password = password1
+                NewUser.set_password(password1)
                 NewUser.save()
-                return redirect('login')
+
+                messages.success(request, 'Konto zostało utworzone')
+                return redirect('login_user')
             else:
                 # display not matching password message
                 messages.error(request, 'Hasła są różne!')

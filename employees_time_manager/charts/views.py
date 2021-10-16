@@ -3,15 +3,21 @@ from .models import Employee
 from .functions.csv_filtering_work import filter_work_data
 from .functions.csv_filtering_employees import filter_employees_data
 from .functions.distributing import distribut_employees_for_one_day
+from django.contrib.auth.decorators import login_required 
+from django.contrib import messages
 
 # Create your views here.
+@login_required(login_url='login')
 def get_csv(request):
     # form = getCsv()
     if request.method == 'POST':
-        csv = request.POST.get('csv')
+        # get uploaded file content
+        csv = request.FILES.get('uploaded_file').read()
+        # print(csv)
 
-        #create sessions csv file
-        request.session['csv'] = csv
+        #create sessions csv file and convert it from bytes to string format
+        request.session['csv'] = csv.decode("utf-8") 
+
 
         return redirect('display_charts')
  
@@ -19,12 +25,23 @@ def get_csv(request):
 
     return render(request, 'charts/paste_csv.html')
 
-
+@login_required(login_url='login')
 def display_charts(request):
 
     csv = request.session.get('csv')
+    # if csv file is empty
+    if not csv:
+        messages.error(request, 'Nie dodany pliku csv!')
+        return redirect('get_csv')
+
     sorted_work_data = filter_work_data(csv)
     employees = Employee.objects.all().values()
+
+    # if csv file is invalid
+    if not sorted_work_data:
+        messages.error(request, 'Twój plik csv jest w złym formacie zobacz na przykładowy plik w polu tekstowym!')
+        return redirect('get_csv')
+
 
     distribution = {}
     for date in sorted_work_data:
@@ -38,16 +55,15 @@ def display_charts(request):
         distributed_day = distribut_employees_for_one_day(work_day,starting_day_work,work_levels,employees_data)
         distribution[date] = distributed_day
 
-          
-
-    
-    
-    
+ 
     return render(request, 'charts/display_charts.html', {'data':distribution})
     
 
 
+@login_required(login_url='login')
 def employees_table(request):
+
+    login_user = request.user
 
     if request.method == 'POST':
         data = request.POST
@@ -58,7 +74,7 @@ def employees_table(request):
         for key in list(data.keys())[1:]:
 
             employee = Employee()
-            # employee.user_id = 120
+            employee.user = login_user
             employee.table_row = key
             
             employee_data = data.getlist(key)
@@ -74,8 +90,8 @@ def employees_table(request):
         return redirect('get_csv')
 
     else:
-            
-        data = Employee.objects.all()
+        
+        data = login_user.employee_set.all()
 
         return render(request, 'charts/employees_table.html', {'data':data})
 

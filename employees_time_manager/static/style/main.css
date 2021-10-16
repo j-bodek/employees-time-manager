@@ -12,13 +12,42 @@ body {
     margin-top: calc(20vh - 70px);
 }
 
+
 /* paste csv file */
-.container>form>textarea {
-    width: 100%;
-    height: 60vh;
-    resize: none;
-    padding: 5px;
+#upload_file {
+    display: none;
 }
+
+.custom-file-upload {
+    cursor: pointer;
+}
+
+.custom-file-upload>input {
+    width: 0px;
+    ;
+}
+
+.custom-file-upload>div {
+    width: 100%;
+    margin: auto;
+    padding: 10vh 0;
+    background-color: #8DCAF8;
+    border: 2px solid #4FADF5;
+    border-radius: 10px
+}
+
+.custom-file-upload>div>p {
+    color: #666
+}
+
+.custom-file-upload>div>p>span {
+    font-weight: bold;
+}
+
+.custom-file-upload>div>p>span:hover {
+    color: black;
+}
+
 
 .show_employees,
 .send_csv_btn {
