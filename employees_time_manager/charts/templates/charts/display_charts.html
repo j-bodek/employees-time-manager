@@ -11,7 +11,7 @@
             <ul>
                 {% for day in data %}
                 <li>
-                    <input class='day' type="checkbox" id="{{day}}" name="{{day}}" value="{{day}}">
+                    <input class='day' type="checkbox" id="{{day}}" name="{{day}}" value="{{day}}" checked>
                     <label for="vehicle1">{{day}}</label><br>
                 </li>
                 {% endfor %}
@@ -28,7 +28,7 @@
 
     <div class='charts'>
         {% for day in data %}  
-            <canvas id="myChart{{day}}" style='display: none;' class='myChart' name='{{day}}'></canvas>
+            <canvas id="myChart{{day}}"  class='myChart' name='{{day}}'></canvas>
         {% endfor %}
     </div>
 </div>

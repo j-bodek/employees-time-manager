@@ -39,7 +39,7 @@ def display_charts(request):
 
     # if csv file is invalid
     if not sorted_work_data:
-        messages.error(request, 'Twój plik csv jest w złym formacie zobacz na przykładowy plik w polu tekstowym!')
+        messages.error(request, 'Twój plik csv jest w złym formacie!')
         return redirect('get_csv')
 
 

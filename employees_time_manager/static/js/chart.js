@@ -1,4 +1,5 @@
 let show_charts_btn = document.querySelector('#show_charts')
+let checked_days = document.querySelectorAll('input[class=day]:checked');
 
 let display_charts = function (chart) {
     let ctx = chart.getContext('2d');
@@ -70,17 +71,26 @@ let display_charts = function (chart) {
 }
 
 
+// display charts 
+checked_days.forEach(day => {
+    let chart = document.getElementById('myChart' + day.getAttribute("name"));
+    display_charts(chart)
+});
+
+
 show_charts_btn.addEventListener('click', (e) => {
-    checked_days = document.querySelectorAll('input[class=day]:checked');
     // display none all active charts
     active_charts = document.querySelectorAll('.myChart')
+
     active_charts.forEach(chart => {
         chart.style.display = 'none'
     })
 
+    // get new checked days
+    checked_days = document.querySelectorAll('input[class=day]:checked');
+
     checked_days.forEach(day => {
         let chart = document.getElementById('myChart' + day.getAttribute("name"));
         chart.style.display = 'block'
-        display_charts(chart)
     });
 })
