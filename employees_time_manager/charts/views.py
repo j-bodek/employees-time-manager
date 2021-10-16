@@ -11,6 +11,12 @@ from django.contrib import messages
 def get_csv(request):
     # form = getCsv()
     if request.method == 'POST':
+
+        # if csv file is empty
+        if not request.FILES.get('uploaded_file'):
+            messages.error(request, 'Nie dodany pliku csv!')
+            return redirect('get_csv')
+
         # get uploaded file content
         csv = request.FILES.get('uploaded_file').read()
         # print(csv)
@@ -29,34 +35,31 @@ def get_csv(request):
 def display_charts(request):
 
     csv = request.session.get('csv')
-    # if csv file is empty
-    if not csv:
-        messages.error(request, 'Nie dodany pliku csv!')
-        return redirect('get_csv')
 
-    sorted_work_data = filter_work_data(csv)
-    employees = Employee.objects.all().values()
-
-    # if csv file is invalid
-    if not sorted_work_data:
-        messages.error(request, 'Twój plik csv jest w złym formacie!')
-        return redirect('get_csv')
+    try:
+        sorted_work_data = filter_work_data(csv)
+        employees = Employee.objects.all().values()
 
 
-    distribution = {}
-    for date in sorted_work_data:
-        day = sorted_work_data[date]
-        starting_day_work = day.copy()
-        work_day = day.copy()
+
+        distribution = {}
+        for date in sorted_work_data:
+            day = sorted_work_data[date]
+            starting_day_work = day.copy()
+            work_day = day.copy()
+            
+            employees_data = filter_employees_data(employees)
+            work_levels = list(day.keys())
+
+            distributed_day = distribut_employees_for_one_day(work_day,starting_day_work,work_levels,employees_data)
+            distribution[date] = distributed_day
+
+    
+        return render(request, 'charts/display_charts.html', {'data':distribution})
         
-        employees_data = filter_employees_data(employees)
-        work_levels = list(day.keys())
-
-        distributed_day = distribut_employees_for_one_day(work_day,starting_day_work,work_levels,employees_data)
-        distribution[date] = distributed_day
-
- 
-    return render(request, 'charts/display_charts.html', {'data':distribution})
+    except:
+        messages.error(request, 'Twój plik csv jest w złej formie!')
+        return redirect('get_csv')
     
 
 

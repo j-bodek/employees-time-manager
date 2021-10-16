@@ -44,10 +44,12 @@ dragHandlere= function(event){
 dropHandler = function(event){
     event.preventDefault()
     // upload droped data to input
-    document.getElementById('upload_file').files = event.dataTransfer.files
-    // display uploaded file name
-    document.querySelector('.uploaded_file').innerHTML = event.dataTransfer.files[0]['name']
-    
+    let uploaded_file_name = event.dataTransfer.files[0]['name'] 
+    if (uploaded_file_name.split('.').pop() == 'csv'){
+        document.getElementById('upload_file').files = event.dataTransfer.files
+        // display uploaded file name
+        document.querySelector('.uploaded_file').innerHTML = uploaded_file_name
+    }
 }
 
 uploadFile = function(event) {
