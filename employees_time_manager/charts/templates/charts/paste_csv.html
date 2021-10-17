@@ -1,10 +1,13 @@
 {% extends 'main.html' %}
-
+{% load static %}
 
 {% block content %} 
 
 
 <div class='container'>
+
+    
+
     <h2>Wybierz plik csv</h2>
 
     <!-- Form must have specified enctype="multipart/form-data" otherwise, FILES will be a blank dictionary-like object -->
@@ -22,7 +25,8 @@
         <input name='uploaded_file' id='upload_file' onchange="uploadFile(event)" type="file" accept=".csv">
 
         <input class='send_csv_btn' type="submit">
-        <button class='show_employees'><a href="{% url 'employees_table'%}">Pokaż Pracowników</a></button>
+        <button type='button' class='show_employees'><a href="{% url 'employees_table'%}">Pokaż Pracowników</a></button>
+        <a href="{% url 'logout_user' %}"><button type='button' class='logout'>Wyloguj Się</button></a>
     </form>
 
     
@@ -33,38 +37,7 @@
 {% endblock content %}
 
 {% block js %}  
-
-<script>
-
-
-dragHandlere= function(event){
-    event.preventDefault()
-}
-
-dropHandler = function(event){
-    event.preventDefault()
-    // upload droped data to input
-    let uploaded_file_name = event.dataTransfer.files[0]['name'] 
-    if (uploaded_file_name.split('.').pop() == 'csv'){
-        document.getElementById('upload_file').files = event.dataTransfer.files
-        // display uploaded file name
-        document.querySelector('.uploaded_file').innerHTML = uploaded_file_name
-    }
-}
-
-uploadFile = function(event) {
-    let uploaded_file_name = event.target.files[0]['name'];
-    document.querySelector('.uploaded_file').innerHTML = uploaded_file_name
-};
-
-document.querySelector('.drop_file').addEventListener('click',(e)=>{
-   if(event.target.id !== 'choose_file'){
-       e.preventDefault()
-   }
-})
-
-</script>
-
+<script src="{% static 'js/dropZone.js' %}"></script>
 {% endblock js %}
 
 

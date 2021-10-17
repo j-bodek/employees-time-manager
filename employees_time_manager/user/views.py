@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required 
 
 # Create your views here.
 
@@ -63,3 +64,13 @@ def register(request):
 
 
     return render(request, 'user/login_register.html', {'form':'register'})
+
+
+
+@login_required(login_url='login_user')
+def logout_user(request):
+    user = request.user
+    print(user)
+    logout(request)
+    messages.error(request, f'Użytkownik {user} wylogowany!')
+    return redirect('login_user')

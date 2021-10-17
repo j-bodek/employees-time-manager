@@ -7,6 +7,8 @@
 <div class='charts_container'>
     <div class='days'>
         <a href="{% url 'get_csv' %}">< Wróć</a>
+        <a href="{% url 'logout_user' %}">Wyloguj Się</a>
+
         <form action="">
             <ul>
                 {% for day in data %}

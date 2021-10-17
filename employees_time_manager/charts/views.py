@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
-@login_required(login_url='login')
+@login_required(login_url='login_user')
 def get_csv(request):
     # form = getCsv()
     if request.method == 'POST':
@@ -31,7 +31,7 @@ def get_csv(request):
 
     return render(request, 'charts/paste_csv.html')
 
-@login_required(login_url='login')
+@login_required(login_url='login_user')
 def display_charts(request):
 
     csv = request.session.get('csv')
@@ -56,14 +56,14 @@ def display_charts(request):
 
     
         return render(request, 'charts/display_charts.html', {'data':distribution})
-        
+
     except:
         messages.error(request, 'Twój plik csv jest w złej formie!')
         return redirect('get_csv')
     
 
 
-@login_required(login_url='login')
+@login_required(login_url='login_user')
 def employees_table(request):
 
     login_user = request.user
