@@ -54,10 +54,10 @@ def calculate_employee_score(employee):
         # list of time avaiable for employees that can do specific job
         employees_time = [ x['time'] for x in employees.values() if x[job] == 1 ]
 
-        # if work time is 0 skip to prevent divistion by 0
-        if day_work[job] == 0: continue
+        # if employees_time is 0 skip to prevent divistion by 0
+        if employees_time == 0: continue
         # add employee score for one job to overall score
-        employee_score += sum(employees_time)/day_work[job]
+        employee_score += day_work[job]/sum(employees_time)
 
     return employee_score
 
@@ -82,6 +82,7 @@ def distribut_employees_for_one_day(day_work,starting_day_work,work_levels,emplo
 
 
         for i in range(len(available_employees)):
+            # get index of employee with lowest employee_score
             min_score_employee_index = list(available_employees.values()).index(min(available_employees.values()))
             employee = list(available_employees.keys())[min_score_employee_index]
             
